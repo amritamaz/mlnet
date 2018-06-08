@@ -10,11 +10,11 @@ from model import ml_net_model, loss
 
 def generator(b_s, phase_gen='train'):
     if phase_gen == 'train':
-        images = [imgs_train_path + f for f in os.listdir(imgs_train_path) if f.endswith('.jpg')]
-        maps = [maps_train_path + f for f in os.listdir(maps_train_path) if f.endswith('.jpg')]
+        images = [imgs_train_path + f for f in os.listdir(imgs_train_path) if f.endswith('.png')]
+        maps = [maps_train_path + f for f in os.listdir(maps_train_path) if f.endswith('.png')]
     elif phase_gen == 'val':
-        images = [imgs_val_path + f for f in os.listdir(imgs_val_path) if f.endswith('.jpg')]
-        maps = [maps_val_path + f for f in os.listdir(maps_val_path) if f.endswith('.jpg')]
+        images = [imgs_val_path + f for f in os.listdir(imgs_val_path) if f.endswith('.png')]
+        maps = [maps_val_path + f for f in os.listdir(maps_val_path) if f.endswith('.png')]
     else:
         raise NotImplementedError
 
@@ -28,7 +28,7 @@ def generator(b_s, phase_gen='train'):
 
 
 def generator_test(b_s, imgs_test_path):
-    images = [imgs_test_path + f for f in os.listdir(imgs_test_path) if f.endswith('.jpg')]
+    images = [imgs_test_path + f for f in os.listdir(imgs_test_path) if f.endswith('.png')]
     images.sort()
 
     counter = 0
@@ -54,13 +54,13 @@ if __name__ == '__main__':
 
     elif phase == "test":
         # path of output folder
-        output_folder = ''
+        output_folder = 'test_new'
 
         if len(sys.argv) < 2:
             raise SyntaxError
         imgs_test_path = sys.argv[2]
 
-        file_names = [f for f in os.listdir(imgs_test_path) if f.endswith('.jpg')]
+        file_names = [f for f in os.listdir(imgs_test_path) if f.endswith('.png')]
         file_names.sort()
         nb_imgs_test = len(file_names)
 
